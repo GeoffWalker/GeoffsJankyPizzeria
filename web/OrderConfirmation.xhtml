@@ -1,0 +1,49 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+    <h:head>
+        <title>Geoff's Janky Pizzeria - Order Summary</title>
+        <link rel="stylesheet" href="includes/pizzaStyle.css"></link>
+    </h:head>
+    <h:body>
+        <center>
+        <h1>Thank You For Your Order!</h1><br/>
+        <fieldset style="width: 40%; border: #000000 3px solid; background-color: #f4f7f9">
+            <legend style="">Your Order Details</legend>
+            <h:dataTable value="#{orderSummaryBackingBean.GetPizzasByOrder(session.getAttribute('orderId'))}" var="p" cellspacing="20">
+                <h:column>
+                    #{p.size}
+                </h:column>
+                <h:column>
+                    #{p.crustType}
+                </h:column>
+                <h:column>
+                    <h:dataTable value="#{orderSummaryBackingBean.GetToppingsByPizza(p.pizzaId)}" var="t" cellspacing="0">
+                        <h:column>
+                            #{t.name}
+                        </h:column>
+                    </h:dataTable>
+                </h:column>
+                <h:column>
+                    #{p.price}
+                </h:column>
+            </h:dataTable>
+            <hr class="hrstyle"/>
+            <p>Order Total: $#{orderSummaryBackingBean.orderTotal}</p>
+            <h:outputLabel value="Your #{orderSummaryBackingBean.orderType} date/time is: #{orderSummaryBackingBean.endDate}"></h:outputLabel>
+            <br/><br/>
+            <h:form style="background-color: transparent">
+                <h:commandButton value="Pay With PayPal" id="btnPaypal" action="#{orderSummaryBackingBean.SubmitOrderPaypal()}"/>
+            </h:form>
+            <h:form style="background-color: transparent">
+                <h:commandButton value="Pay With Cash" id="btnCash" action="#{orderSummaryBackingBean.SubmitOrderCash()}"/>
+            </h:form>
+        </fieldset>
+        
+        </center>
+    </h:body>
+</html>
+

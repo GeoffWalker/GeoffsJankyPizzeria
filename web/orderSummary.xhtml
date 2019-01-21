@@ -1,0 +1,35 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+    <h:head>
+        <title>Geoff's Janky Pizzeria - Order Summary</title>
+        <link href="#{request.contextPath}/includes/pizzaStyle.css" rel="stylesheet" type="text/css"></link>
+        <h:outputStylesheet name="includes/pizzaStyle.css"/>
+    </h:head>
+    <h:body>
+        
+        <h1>Thank You For Your Order!</h1><br/>
+        <p>Order Total:</p><br/>
+        <h:outputLabel id="lblName" value="Input Name:"></h:outputLabel>
+        <!--<c:choose>
+            <c:when test="#{orderSummaryBackingBean.orderType eq 'pickup'}">
+                <h:outputLabel id="lblOutput" value="pickup"/><br/>
+            </c:when>
+            <c:otherwise>
+                <h:outputLabel id="lblOutput" value="delivery"/><br/>
+            </c:otherwise>
+        </c:choose>
+        <c:choose>
+            
+            <c:when test="${orderSummaryBackingBean.orderType eq 'pickup'}">
+                <h:outputLabel value="Your delivery date/time is:"/>
+            </c:when>
+            <c:otherwise> 
+                <h:outputLabel value="Your delivery date/time is:"/> 
+            </c:otherwise>
+        </c:choose>-->
+    </h:body>
+</html>
+
